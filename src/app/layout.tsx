@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 
-import Header from '@/components/header'
-
-import { config } from '@/config/config'
+import { config } from '@/shared/model/config'
+import Header from '@/shared/ui/header'
 
 import './globals.css'
 

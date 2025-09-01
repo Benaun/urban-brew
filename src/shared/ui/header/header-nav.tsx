@@ -3,16 +3,16 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { config } from '@/config/config'
+import { config } from '@/shared/model/config'
 
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList
-} from '../ui/navigation-menu'
+} from '../kit/navigation-menu'
 
-const Nav = () => {
+const HeaderNav = () => {
   const pathName = usePathname()
 
   const renderNavItem = () => {
@@ -49,4 +49,4 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default HeaderNav

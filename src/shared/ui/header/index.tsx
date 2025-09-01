@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '../ui/button'
+import { Button } from '../kit/button'
 
-import Nav from './nav'
+import HeaderNav from './header-nav'
 
 const Logo = () => {
   return (
@@ -25,7 +25,7 @@ const Header = () => {
           <Logo />
         </Link>
 
-        <Nav />
+        <HeaderNav />
 
         <div className='flex'>
           <Button>Войти</Button>
