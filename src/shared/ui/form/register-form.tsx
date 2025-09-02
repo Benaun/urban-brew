@@ -12,12 +12,20 @@ import { Button } from '../kit/button'
 import { Label } from '../kit/label'
 
 const RegisterForm = () => {
-  const { register, handleSubmit, reset, setValue, getValues } =
-    useForm<RegisterFormData>({
-      resolver: zodResolver(registerSchema)
-    })
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    getValues,
+    formState: { errors }
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema)
+  })
 
-  const onSubmit = (data: RegisterFormData) => console.log(data)
+  const onSubmit = (data: RegisterFormData) => {
+    ;(console.log(data), reset())
+  }
 
   const handlePhoneFocus = () => {
     const currentValue = getValues('phone')
@@ -39,6 +47,13 @@ const RegisterForm = () => {
               field.name === 'phone'
                 ? handlePhoneFocus
                 : undefined
+            }
+            hasError={
+              !!errors[field.name as keyof RegisterFormData]
+            }
+            errorMessage={
+              errors[field.name as keyof RegisterFormData]
+                ?.message
             }
           />
         </div>

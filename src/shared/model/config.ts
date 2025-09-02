@@ -35,5 +35,19 @@ export const config = {
       label: 'Подтвердить пароль',
       type: 'password'
     }
+  ],
+
+  loginFields: [
+    {
+      name: 'email',
+      label: 'Почта',
+      placeholder: 'examle@mail.ru'
+    },
+    {
+      name: 'password',
+      label: 'Пароль',
+      type: 'password',
+      placeholder: '*********'
+    }
   ]
 }
