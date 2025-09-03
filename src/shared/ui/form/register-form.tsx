@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
+import { register as registerUser } from '@/shared/actions/register'
 import { config } from '@/shared/model/config'
 import { RegisterFormData } from '@/shared/model/types'
 import { registerSchema } from '@/shared/model/validation'
@@ -23,8 +24,16 @@ const RegisterForm = () => {
     resolver: zodResolver(registerSchema)
   })
 
-  const onSubmit = (data: RegisterFormData) => {
-    ;(console.log(data), reset())
+  const onSubmit = async (data: RegisterFormData) => {
+    try {
+      const user = await registerUser(data)
+      if (user) {
+        reset()
+        console.log('Registration successful!')
+      }
+    } catch (error) {
+      console.error('Registration failed:', error)
+    }
   }
 
   const handlePhoneFocus = () => {

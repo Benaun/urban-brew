@@ -1,3 +1,5 @@
+import LoginForm from '@/shared/ui/form/login-form'
+import RegisterForm from '@/shared/ui/form/register-form'
 import { Button } from '@/shared/ui/kit/button'
 
 export default function Home() {
@@ -9,6 +11,9 @@ export default function Home() {
       >
         Click me
       </Button>
+
+      <RegisterForm />
+      <LoginForm />
     </div>
   )
 }
