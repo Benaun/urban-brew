@@ -21,5 +21,7 @@ export const registerSchema = z
 
 export const loginSchema = z.object({
   email: z.string({ message: 'Почта обязателена' }).email(),
-  password: z.string({ message: 'Пароль обязателен' }).min(6)
+  password: z
+    .string({ message: 'Пароль обязателен' })
+    .min(6, 'Пароль должен быть не менее 6 символов')
 })

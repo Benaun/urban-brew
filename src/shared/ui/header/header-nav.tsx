@@ -1,9 +1,7 @@
-'use client'
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { config } from '@/shared/model/config'
+import { appConfig } from '@/shared/model/config'
 
 import {
   NavigationMenu,
@@ -16,18 +14,18 @@ const HeaderNav = () => {
   const pathName = usePathname()
 
   const renderNavItem = () => {
-    return config.navItems.map(item => {
+    return appConfig.navItems.map(item => {
       const isActive = pathName === item.href
       return (
         <NavigationMenuLink asChild key={item.label}>
           <Link
             href={item.href}
             className={`text-2xl border border-transparent 
-                ${isActive ? 'text-blue-500' : 'text-black'} 
-                hover:text-blue-300 hover:border 
-                hover:border-blue-300 
-                hover:rounded-md
-                transition-colors transform-border duration-200
+              ${isActive ? 'text-blue-500' : 'text-black'} 
+              hover:text-blue-300 hover:border 
+              hover:border-blue-300 
+              hover:rounded-md
+              transition-colors transform-border duration-200
                 `}
           >
             {item.label}

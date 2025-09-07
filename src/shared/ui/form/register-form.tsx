@@ -3,8 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { register as registerUser } from '@/shared/actions/register'
-import { config } from '@/shared/model/config'
+import { registerUser } from '@/shared/actions/register-user'
+import { appConfig } from '@/shared/model/config'
 import { RegisterFormData } from '@/shared/model/types'
 import { registerSchema } from '@/shared/model/validation'
 
@@ -44,7 +44,7 @@ const RegisterForm = () => {
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {config.registerFields.map(field => (
+      {appConfig.registerFields.map(field => (
         <div key={field.label}>
           <Label>{field.label}</Label>
           <Input

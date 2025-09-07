@@ -1,11 +1,13 @@
-import { z } from 'zod'
+import { TypeOf, z } from 'zod'
 
-import { registerSchema } from './validation'
+import { loginSchema, registerSchema } from './validation'
 
 export type RegisterFormData = z.infer<typeof registerSchema>
 
-export interface IRegisterField {
-  name: keyof RegisterFormData
+export type LoginFormData = z.infer<typeof loginSchema>
+
+export interface IField<T> {
+  name: keyof T
   label: string
   placeholder?: string
   type?: string

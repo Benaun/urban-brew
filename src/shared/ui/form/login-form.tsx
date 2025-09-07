@@ -2,16 +2,15 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 
-import { config } from '@/shared/model/config'
+import { signInUser } from '@/shared/actions/sign-in'
+import { appConfig } from '@/shared/model/config'
+import { LoginFormData } from '@/shared/model/types'
 import { loginSchema } from '@/shared/model/validation'
 
 import Input from '../input/input'
 import { Button } from '../kit/button'
 import { Label } from '../kit/label'
-
-type LoginFormData = z.infer<typeof loginSchema>
 
 const LoginForm = () => {
   const {
@@ -23,13 +22,15 @@ const LoginForm = () => {
     resolver: zodResolver(loginSchema)
   })
 
-  const onSubmit = (data: LoginFormData) => {
-    ;(console.log(data), reset())
+  const onSubmit = async (data: LoginFormData) => {
+    await signInUser(data.email, data.password)
+    reset()
+    window.location.reload()
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {config.loginFields.map(field => (
+      {appConfig.loginFields.map(field => (
         <div key={field.label}>
           <Label>{field.label}</Label>
           <Input

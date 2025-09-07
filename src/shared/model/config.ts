@@ -1,4 +1,4 @@
-export const config = {
+export const appConfig = {
   title: {
     default: 'Urban Coffee',
     template: '%s | Urban Coffee'
